@@ -63,14 +63,16 @@ Now we can run our server with: `<npm start>`, which will respond with a 'Server
 
 If all goes well, we can now create our Dockerfile, for building our nodejs docker container. This file will look like this: 
 
-> FROM node:latest
-> RUN mkdir -p /src/app
-> WORKDIR /src/app
-> COPY package.json /src/app/package.json
-> RUN npm install
-> COPY . /src/app
-> EXPOSE 3000
-> CMD [ "npm", "start" ]
+``` dockerfile
+FROM node:latest
+RUN mkdir -p /src/app
+WORKDIR /src/app
+COPY package.json /src/app/package.json
+RUN npm install
+COPY . /src/app
+EXPOSE 3000
+CMD [ "npm", "start" ]
+```
 
 In this file, we are telling docker to use the base image node:lastest, which is a nodejs base image. In this container, we will create a new folder /src/app and making it the working directory for the rest of our Dockerfile. We will copy our package.json file and run npm install, to ensure that we have the right packages and modules installed for our nodejs server. Then we will copy everything in our project folder to this new working directory and expose port 3000 on the container. Finally, we will run the server with npm start.
 
