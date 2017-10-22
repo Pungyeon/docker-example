@@ -105,5 +105,5 @@ That's that! So easy, huh? So there is no excuse not to be containerising all yo
 
 To learn more about docker and containerisation, I suggest the following sites: 
 
-https://www.katacoda.com
-https://www.docker.com/
+https://www.katacoda.com - Interactive lessons for Docker, kubernetes and much more!
+https://www.docker.com/ - The official Docker website, with good documentation, as well as a sandbox environment for practicing docker.
