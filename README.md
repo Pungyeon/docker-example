@@ -57,7 +57,7 @@ We will also create a index.html file, which some simple 'Hello World.' content 
 <p>Hello World!</p>
 ```
 
-Now we can run our server with: `<npm start>`, which will respond with a 'Server listening on port 3000'. Furthermore, you can direct a browser to http://localhost:3000 and see your 'Hello World' message, which we put in the index.html file. 
+Now we can run our server with: `npm start`, which will respond with a 'Server listening on port 3000'. Furthermore, you can direct a browser to http://localhost:3000 and see your 'Hello World' message, which we put in the index.html file. 
 
 ### Containerising with Docker
 
@@ -91,7 +91,7 @@ The '-t' parameters specifies a friendly name for our image, which we can re-use
 
 > docker run -d --name my-running-app -p 3000:3000 my-nodejs-server
 
-Again, the -p 3000:3000 specifying which ports to expose. We can make sure that our container is running as expected, using the ps command, which will list all our running containers: 
+Again, the `-p 3000:3000` specifying which ports to expose. We can make sure that our container is running as expected, using the ps command, which will list all our running containers: 
 
 > docker ps
 
