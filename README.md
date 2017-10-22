@@ -5,9 +5,9 @@ So, before we begin this tutorial about containerising our applications, let's t
 
 Now, I am not going to describe in detail what Docker is and all the wonderful things that containers do. Docker has a pretty good e-book on it, which is available for free from their website: https://www.docker.com/what-container#/package_software
 
-But to say this in a very short format, containers are useful for developers as they bring a new kind of portability to their work, which wasn't really avilable previously. Instead of having to develop on one sytem, test on another and deploy to a production on a third kind of setup, Docker makes it possible to develop to a container, test on that same container image and deploy to production via. that cotainer-image. This eliminates a lot of bugs and a lot of shrugging with the following mandatory "well... it works on my machine...".
+But to say this in a simply way, containers are useful for developers as they bring a new kind of portability to their work, which wasn't really avilable previously. Instead of having to develop on one sytem, test on another and deploy to a production on a third kind of setup, Docker makes it possible to develop to a container, test on that same container image and deploy to production via. that cotainer-image. This eliminates a lot of bugs and a lot of shrugging with the following mandatory "well... it works on my machine...".
 
-There are obviously many other advantages to working with Docker: It is less lightweight than working with traditional Virutal Machines and takes up far less resources. It's more flexible and easier to automate and actually also makes scaling applications a whole lot easier. But again, others have written much more extensively about this, such as devops.com: https://devops.com/docker-vs-vms/
+There are obviously many other advantages to working with Docker, and the advantages are not only for developers. Docker extremely lightweight on resources, especially compared to traditional Virutal Machines. It's more flexible and easier to automate and actually also makes scaling applications a whole lot easier. It's also extremely compatible for cloud deployments... but again, others have written much more extensively about this, such as devops.com: https://devops.com/docker-vs-vms/
 
 ### Prerequisites
 
@@ -24,7 +24,7 @@ https://docs.docker.com/docker-for-windows/install/
 
 We will also need Nodejs for this tutorial, which can be installed from: https://nodejs.org/en/
 
-Now, use your favourite text-editor for this, there is no requirements there. However, I prefer using Visual Code, which youo can get for free here: https://code.visualstudio.com/
+Now, use your favourite text-editor for this, there is no requirements there. However, I prefer and recommend using Visual Code, which you can get for free here: https://code.visualstudio.com/
 
 All the code written in this tutorial can be found at https://github.com/Pungyeon/docker-example
 
@@ -32,7 +32,7 @@ Alright, enough prerequisites and installing! Let's get on with it!
 
 ### Initialising our NPM project
 
-First we will initialise our nodejs project with npm init
+First we will initialise our nodejs project with npm init. So let's create a folder for our new project and go to that new directory and run: 
 
 > npm init
 
@@ -42,7 +42,7 @@ Once we have gone through this setup, next, let's install some packages for our 
 
 ### Node.js Server
 
-Great. Now let's write our express web server:
+Great. Now, let's write our express web server:
 
 > 'server.js'
 ```javascript
@@ -62,7 +62,7 @@ console.log("Server listening on port 3000");
 ```
 Basically, this loads up 'express' and 'fs' modules. Express is a easy way to write web-servers in nodejs, and fs is the default library for interacting with the filesystem. with 'app.get' we specify what should happen on the url '/' (so in our case 'https://localhost:3000') and finally we tell our server to listen on port 3000 and write to our console that this is what our server is listening on port 3000.
 
-We will also create a index.html file, which some simple 'Hello World.' content to return to the user visiting our web server.
+We will also create an index.html file, which will be a very simple html file printing out "Hello World!"
 
 > index.html
 ```html
@@ -97,11 +97,11 @@ node_modules
 
 Now we can build our docker container! :clap:
 
-> docker build -t my-nodejs-server
+> docker build -t my-nodejs-server .
 
-The '-t' parameters specifies a friendly name for our image, which we can re-use to run the container, once docker is finished building:
+The '-t' parameters specifies a friendly name for our image, which we can re-use to run the container, once docker is finished building, we can see all our available local images with the `docker ps` command. To run our newly built container, we will use the command:
 
-> docker run -d --name my-running-app -p 3000:3000 my-nodejs-server
+> docker run -d --name node-server -p 3000:3000 my-nodejs-server
 
 Again, the `-p 3000:3000` specifying which ports to expose. We can make sure that our container is running as expected, using the ps command, which will list all our running containers: 
 
