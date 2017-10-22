@@ -1,4 +1,14 @@
 
+### Why Containerise? 
+
+So, before we begin this tutorial about containerising our applications, let's talk a little about why we would like to do this. 
+
+Now, I am not going to describe in detail what Docker is and all the wonderful things that containers do. Docker has a pretty good e-book on it, which is available for free from their website: https://www.docker.com/what-container#/package_software
+
+But to say this in a very short format, containers are useful for developers as they bring a new kind of portability to their work, which wasn't really avilable previously. Instead of having to develop on one sytem, test on another and deploy to a production on a third kind of setup, Docker makes it possible to develop to a container, test on that same container image and deploy to production via. that cotainer-image. This eliminates a lot of bugs and a lot of shrugging with the following mandatory "well... it works on my machine...".
+
+There are obviously many other advantages to working with Docker: It is less lightweight than working with traditional Virutal Machines and takes up far less resources. It's more flexible and easier to automate and actually also makes scaling applications a whole lot easier. But again, others have written much more extensively about this, such as devops.com: https://devops.com/docker-vs-vms/
+
 ### Prerequisites
 
 I will be using an Ubuntu 16.04 for this tutorial, but feel free to use your operating system of choice! Docker is available for Windows, Mac OSX and Linux, so I suggets using whatever your are already comfortable with. To install docker, follow the instruction from the official docker site: 
