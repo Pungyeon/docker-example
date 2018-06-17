@@ -1,5 +1,7 @@
 
-### Why Containerise? 
+# Containerising NodeJS Applications
+
+## Why Containerise? 
 
 So, before we begin this tutorial about containerising our applications, let's talk a little about why we would like to do this. 
 
@@ -9,7 +11,7 @@ But to say this in a simply way, containers are useful for developers as they br
 
 There are obviously many other advantages to working with Docker, and the advantages are not only for developers. Docker extremely lightweight on resources, especially compared to traditional Virutal Machines. It's more flexible and easier to automate and actually also makes scaling applications a whole lot easier. It's also extremely compatible for cloud deployments... but again, others have written much more extensively about this, such as devops.com: https://devops.com/docker-vs-vms/
 
-### Prerequisites
+## Prerequisites
 
 I will be using an Ubuntu 16.04 for this tutorial, but feel free to use your operating system of choice! Docker is available for Windows, Mac OSX and Linux, so I suggets using whatever your are already comfortable with. To install docker, follow the instruction from the official docker site: 
 
@@ -30,7 +32,7 @@ All the code written in this tutorial can be found at https://github.com/Pungyeo
 
 Alright, enough prerequisites and installing! Let's get on with it!
 
-### Initialising our NPM project
+## Initialising our NPM project
 
 First we will initialise our nodejs project with npm init. So let's create a folder for our new project and go to that new directory and run: 
 
@@ -40,11 +42,11 @@ Once we have gone through this setup, next, let's install some packages for our 
 
 > npm install --save express
 
-### Node.js Server
+## Node.js Server
 
 Great. Now, let's write our express web server:
 
-> 'server.js'
+#### 'server.js'
 ```javascript
 var express = require('express');
 var fs = require('fs');
@@ -64,14 +66,14 @@ Basically, this loads up 'express' and 'fs' modules. Express is a easy way to wr
 
 We will also create an index.html file, which will be a very simple html file printing out "Hello World!"
 
-> index.html
-```html
+#### index.html
+```
 <p>Hello World!</p>
 ```
 
 Now we can run our server with: `npm start`, which will respond with a 'Server listening on port 3000'. Furthermore, you can direct a browser to http://localhost:3000 and see your 'Hello World' message, which we put in the index.html file. 
 
-### Containerising with Docker
+## Containerising with Docker
 
 If all goes well, we can now create our Dockerfile, for building our nodejs docker container. This file will look like this: 
 
@@ -90,8 +92,8 @@ In this file, we are telling docker to use the base image node:lastest, which is
 
 Now this looks great and all, but we have one small issue. We are copying the node_modules folder into the docker container, after having run npm install, which retrieves\installs all the necessary packages into a node_modules folder of it's own. So, to avoid this unecessary action, we will make a .dockerignore file, which will contain what to ignore, when copying the files to our container:
 
-> .dockerignore
-``` html
+#### .dockerignore
+```
 node_modules
 ```
 
@@ -113,6 +115,7 @@ Of course, we can also use curl, to do the same.
 
 > curl http://localhost:3000
 
+## Done!
 That's that! So easy, huh? So there is no excuse not to be containerising all your applications and start practicing and eventually deploying with docker containers. 
 
 To learn more about docker and containerisation, I suggest the following sites: 
